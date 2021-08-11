@@ -1,0 +1,55 @@
+{
+  "_from": "gulp-in-unused-images",
+  "_id": "gulp-in-unused-images@1.0.0",
+  "_inBundle": false,
+  "_location": "/gulp-in-unused-images",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "gulp-in-unused-images",
+    "name": "gulp-in-unused-images",
+    "escapedName": "gulp-in-unused-images",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "bugs": {
+    "url": "https://oss.navercorp.com/dhwn97/gulp-in-unused-images/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "css": "^2.2.1",
+    "gulp-util": "^3.0.6",
+    "htmlparser2": "^3.8.3",
+    "lodash": "^3.9.3",
+    "mime": "^1.3.4",
+    "through2": "^2.0.0"
+  },
+  "deprecated": false,
+  "description": "find unused images and listup with htmlfile",
+  "homepage": "https://oss.navercorp.com/dhwn97/gulp-in-unused-images",
+  "keywords": [
+    "gulp",
+    "images",
+    "unused",
+    "css",
+    "html",
+    "angular"
+  ],
+  "license": "incomms",
+  "main": "index.js",
+  "name": "gulp-in-unused-images",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@oss.navercorp.com:dhwn97/gulp-in-unused-images.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}
