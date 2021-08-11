@@ -19,7 +19,7 @@
     "/"
   ],
   "bugs": {
-    "url": "https://oss.navercorp.com/dhwn97/gulp-in-unused-images/issues"
+    "url": "git@github.com:dudwndh97/gulp-in-unused-images.git/issues"
   },
   "bundleDependencies": false,
   "dependencies": {
@@ -32,7 +32,7 @@
   },
   "deprecated": false,
   "description": "find unused images and listup with htmlfile",
-  "homepage": "https://oss.navercorp.com/dhwn97/gulp-in-unused-images",
+  "homepage": "git@github.com:dudwndh97/gulp-in-unused-images.git",
   "keywords": [
     "gulp",
     "images",
@@ -46,7 +46,7 @@
   "name": "gulp-in-unused-images",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@oss.navercorp.com:dhwn97/gulp-in-unused-images.git"
+    "url": "git+ssh://git@github.com:dudwndh97/gulp-in-unused-images.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
