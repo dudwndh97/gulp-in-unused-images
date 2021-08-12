@@ -1,15 +1,16 @@
 {
-  "_from": "gulp-in-unused-images",
-  "_id": "gulp-in-unused-images@1.0.0",
+  "_from": "gulp-unused-images",
+  "_id": "gulp-unused-images@1.1.2",
   "_inBundle": false,
-  "_location": "/gulp-in-unused-images",
+  "_integrity": "sha1-I8nghjhNT7yHvWBCcNja9c+9Ukc=",
+  "_location": "/gulp-unused-images",
   "_phantomChildren": {},
   "_requested": {
     "type": "tag",
     "registry": true,
-    "raw": "gulp-in-unused-images",
-    "name": "gulp-in-unused-images",
-    "escapedName": "gulp-in-unused-images",
+    "raw": "gulp-unused-images",
+    "name": "gulp-unused-images",
+    "escapedName": "gulp-unused-images",
     "rawSpec": "",
     "saveSpec": null,
     "fetchSpec": "latest"
@@ -18,9 +19,16 @@
     "#USER",
     "/"
   ],
-  "Enterprise": "",
+  "_resolved": "https://registry.npmjs.org/gulp-unused-images/-/gulp-unused-images-1.1.2.tgz",
+  "_shasum": "23c9e086384d4fbc87bd604270d8daf5cfbd5247",
+  "_spec": "gulp-unused-images",
+  "_where": "/Users/in/OYJ/study/OYJ/image_check",
+  "author": {
+    "name": "Fred Cox",
+    "email": "mcfedr@gmail.com"
+  },
   "bugs": {
-    "url": "git@github.com:dudwndh97/gulp-in-unused-images.git/issues"
+    "url": "https://github.com/mcfedr/gulp-unused-images/issues"
   },
   "bundleDependencies": false,
   "dependencies": {
@@ -32,8 +40,8 @@
     "through2": "^2.0.0"
   },
   "deprecated": false,
-  "description": "find unused images and listup with htmlfile",
-  "homepage": "git@github.com:dudwndh97/gulp-in-unused-images.git",
+  "description": "Attempts to list images that are not used",
+  "homepage": "https://github.com/mcfedr/gulp-unused-images",
   "keywords": [
     "gulp",
     "images",
@@ -42,15 +50,15 @@
     "html",
     "angular"
   ],
-  "license": "incomms",
+  "license": "MIT",
   "main": "index.js",
-  "name": "gulp-in-unused-images",
+  "name": "gulp-unused-images",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:dudwndh97/gulp-in-unused-images.git"
+    "url": "git+ssh://git@github.com/mcfedr/gulp-unused-images.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.0.0"
+  "version": "1.1.2"
 }
