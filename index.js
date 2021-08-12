@@ -11,40 +11,33 @@ var PLUGIN_NAME = 'gulp-in-unused-images';
 
 function findUnusedImages(options) {
 
-    function addUsed(imageUrl) {
-        if (!imageUrl.match(/(data|http|https):/)) {
-            usedImageNames.push(imageUrl.substring(imageUrl.indexOf(options.img_folder_path)));
-        }
-    }
-
     var imageNames = [];
     var usedImageNames = [];
-    var ngUsedImages = [];
 
-    var htmlParser = new htmlparser2.Parser({
-        onopentag: function onopentag(name, attribs) {
-            if (name === 'img') {
-                if (attribs.src) {
-                    addUsed(attribs.src);
-                }
-                if (attribs['ng-src']) {
-                    ngUsedImages.push(attribs['ng-src']);
-                }
-            }
-			// eg shortcut icon apple-touch-icon, it doesnt matter if we add extras that are not images
-            else if (name === 'link' && attribs.href) {
-                addUsed(attribs.href);
-            }
-			// eg msapplication-xxx
-            else if (name === 'meta' && attribs.content) {
-                addUsed(attribs.content);
-            }
-            // video posters
-            else if (name == 'video' && attribs.poster) {
-                addUsed(attribs.poster);
-            }
-        }
-    });
+    // var htmlParser = new htmlparser2.Parser({
+    //     onopentag: function onopentag(name, attribs) {
+    //         if (name === 'img') {
+    //             if (attribs.src) {
+    //                 addUsed(attribs.src);
+    //             }
+    //             if (attribs['ng-src']) {
+    //                 ngUsedImages.push(attribs['ng-src']);
+    //             }
+    //         }
+	// 		// eg shortcut icon apple-touch-icon, it doesnt matter if we add extras that are not images
+    //         else if (name === 'link' && attribs.href) {
+    //             addUsed(attribs.href);
+    //         }
+	// 		// eg msapplication-xxx
+    //         else if (name === 'meta' && attribs.content) {
+    //             addUsed(attribs.content);
+    //         }
+    //         // video posters
+    //         else if (name == 'video' && attribs.poster) {
+    //             addUsed(attribs.poster);
+    //         }
+    //     }
+    // });
 
     var transform = through2.obj(function (chunk, enc, callback) {
 
@@ -101,6 +94,7 @@ function findUnusedImages(options) {
         function getImageUrl(element, index, array) {
             if(element.match(options.img_folder_path)) array[index] = element.substring(element.indexOf(options.img_folder_path))
             if(options.multi_folder) {
+                options.depth_to_folder = '';
                 if(element.match(options.img_folder_path)) array[index] = element.substring(element.indexOf(options.img_folder_path))
             }
         }
