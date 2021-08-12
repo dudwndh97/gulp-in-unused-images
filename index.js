@@ -102,14 +102,14 @@ function findUnusedImages(options) {
           var usedImages = _.findUsedImages(imageNames, usedImageNames);
           var unusedImages = _.difference(imageNames, usedImages);
 
-        if (unusedImages.length && options.log) {
+        if (unusedImages.length) {
             unusedImages.forEach(getImageUrl);
-
+            var count = unusedImages.length 
             var pathto = options.depth_to_folder ;
-            var htmlcontent = '<li><img src="' + pathto + unusedImages.join('"/><name></li> <li><img src="' + pathto) + '"/></li>' ;
+            var htmlcontent = '<li><img src="' + pathto + unusedImages.join('"/></li> <li><img src="' + pathto) + '"/></li>' ;
             fs.readFile(__dirname+'/template/template.html', 'utf-8', function (err,data) {
                 if (err) return console.log(err);
-				var makeHtml = data.replace(/\n\s*<!--\s*here\s*-->/, htmlcontent);
+				        var makeHtml = data.replace(/\n\s*<!--\s*here\s*-->/, htmlcontent).replace(/\(\(length\)\)/, count);
                 fs.writeFile('@unused.html',makeHtml ,function(err) {
                     if (err) return console.log(err);
                 })

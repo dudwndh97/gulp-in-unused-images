@@ -1,35 +1,53 @@
 # Unused Images
 
-Attempts to list all the images that are not referenced in your html and css.
-
-Images are match by filename only. This is because its likely that the 'filesystem' that a browser will see is very
-different from the one that gulp sees.
-
-Images with absolute urls will also be ignored.
+저장소에서 사용되지 않는 이미지 목록을 찾아, 보여줍니다.
+gulp find_unused 로 작동하며 (수정 가능) 프로세스가 정상적으로 완료되면 @unused.html이 생기고, 이미지 리스트가 생깁니다. 
 
 ## Usage
+#### Package.json에 아래 추가
 
-Stream all the images, css and html files that you have into it, it emits errors, so use plumber to catch and see them
+    "gulp-in-unused-images": "git+https://oss.navercorp.com/dhwn97/gulp-in-unused-images.git#master ",
+    
 
-	gulp.task('images:filter', function () {
-	    return gulp.src(['app/images/**/*', '.tmp/styles/**/*.css', 'app/*.html', 'app/partials/**/*.html'])
-	        .pipe(plumber())
-	        .pipe(unusedImages())
-	        .pipe(plumber.stop());
+이미지 폴더가 하나일 경우 이미지 폴더와 같은 depth여도 무방하지만, <br>
+이미지 폴더가 여러개일 경우 제일 상위 depth인 이미지폴더보다 한단계 상위부모와 같은 레벨에서 gulp 실행해주세요.
+
+#### gulpfile.js 예시
+	var findUnusedImages = require('gulp-in-unused-images');
+	
+	
+	//이미지 폴더가 하나일 경우 , depth가 같아도됨.
+	gulp.task('find_unused', function () {
+  		var options = {
+    		  multi_folder : false, // 이미지 폴더가 여러개일 경우 true 로 해주시고 img_folder_path를 모든 이미지 폴더의 상위폴더로 적어주세요.
+    		  img_folder_path : 'img/', // 이미지 폴더명 입력
+    		  depth_to_folder : '', // gulpfile과 이미지 폴더 사이에 depth가 있다면 적어주세요. (저장소 명이라면 저장소명/ , src라면 src/)
+  		}
+  		return gulp.src(['src/**/img/**/*','src/**/*.html', 'src/css/**/*.css']) //이미지 폴더가 여러개 일경우 폴더명을 모두 적어주세요
+		
+  		.pipe(findUnusedImages(options))
 	});
 	
-## Options
+	//이미지 폴더 여러개 일 경우 , 부모 폴더에 위치.
+	gulp.task('find_unused', function () {
+  	  	var options = {
+    		  multi_folder : true, // 이미지 폴더가 여러개일 경우 true 로 해주시고 img_folder_path를 모든 이미지 폴더의 상위폴더로 적어주세요.
+    		  img_folder_path : 'src/', // 이미지 폴더명 입력
+    		  depth_to_folder : 'src/', //gulpfile과 이미지 폴더 사이에 depth가 있다면 적어주세요. (저장소 명이라면 저장소명/ , src라면 src/)
+  		}
+  		return gulp.src(['src/**/img/**/*','src/**/image/**/*', 'src/**/*.html', 'src/css/**/*.css']) //이미지 폴더가 여러개 일경우 폴더명을 모두 적어주세요
+		
+  		.pipe(findUnusedImages(options))
+	});
 
-### options.log
 
-* Type: `Boolean`
-* Default: `true`
+### options
 
-Whether to emit errors for unused images
+* multi_folder: `Boolean` // 이미지 폴더가 여러개일 경우 true 로 해주시고 img_folder_path를 모든 이미지 폴더의 상위폴더로 적어주세요.
+* img_folder_path : `string` // 이미지 폴더명 입력 , 이미지 폴더가 여러개일 경우 모든 이미지 폴더의 상위폴더로 적어주세요.( ex) src/ 또는 저장소명/ )
+* depth_to_folder : `string` //gulpfile과 이미지 폴더 사이에 depth가 있다면 적어주세요. (저장소 명이라면 저장소명/ , src라면 src/)
+
 	
 ## Output
 
-The output lists the images that it found no references to and any ng-src attributes that it saw, allowing you to try and decided what that would refer to
-
-    Error: Unused images: arrow_grey_right.png, bg-circel-not-empty-small.png
-    ng-src: {{ app.iconUrl || 'images/generic_android_icon.png' }}
+gulpfile 과 같은 레벨에 @unused.html 파일이 생성됩니다. 이미지를 확인하실 수 있습니다.
