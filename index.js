@@ -98,9 +98,12 @@ function findUnusedImages(options) {
               });
             },
         });
-            function getImageUrl(element, index, array) {
+        function getImageUrl(element, index, array) {
+            if(element.match(options.img_folder_path)) array[index] = element.substring(element.indexOf(options.img_folder_path))
+            if(options.multi_folder) {
                 if(element.match(options.img_folder_path)) array[index] = element.substring(element.indexOf(options.img_folder_path))
             }
+        }
 
           var usedImages = _.findUsedImages(imageNames, usedImageNames);
           var unusedImages = _.difference(imageNames, usedImages);
